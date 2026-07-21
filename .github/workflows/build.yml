@@ -13,12 +13,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Restore NuGet packages
         run: nuget restore Fedoraware\Fedoraware.sln
 
       - name: Build Release|x64
-        run: msbuild Fedoraware\Fedoraware.sln /p:Configuration=Release /p:Platform=x64 /p:VisualStudioVersion=17.0 /m
+        shell: pwsh
+        run: |
+          $msbuild = vswhere -latest -requires Microsoft.Component.MSBuild -find MSBuild\Current\Bin\MSBuild.exe
+          if (-not $msbuild) { throw "MSBuild not found" }
+          & $msbuild Fedoraware\Fedoraware.sln /p:Configuration=Release /p:Platform=x64 /m
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
