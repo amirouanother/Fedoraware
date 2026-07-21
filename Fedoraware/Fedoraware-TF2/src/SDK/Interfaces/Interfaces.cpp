@@ -120,7 +120,7 @@ void CInterfaces::Init()
 	AllowSecureServers = *S::AllowSecureServers.As<bool**>();
 	VALIDATE(AllowSecureServers);
 
-	ViewRender = *S::ViewRender_Interface.As<IViewRender*>();
+	ViewRender = S::ViewRender_Interface.As<IViewRender*>();
 	VALIDATE(ViewRender);
 
 	Input = **S::Input_Interface.As<IInput***>();

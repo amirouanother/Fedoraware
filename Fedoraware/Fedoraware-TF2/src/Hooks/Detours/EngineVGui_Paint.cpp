@@ -15,12 +15,6 @@
 #include "../../Features/Menu/MaterialEditor/MaterialEditor.h"
 #include "../../Features/Menu/Playerlist/Playerlist.h"
 
-namespace S
-{
-	MAKE_SIGNATURE(StartDrawing, MATSURFACE_DLL, "55 8B EC 64 A1 ? ? ? ? 6A FF 68 ? ? ? ? 50 64 89 25 ? ? ? ? 83 EC 14", 0x0);
-	MAKE_SIGNATURE(FinishDrawing, MATSURFACE_DLL, "55 8B EC 6A FF 68 ? ? ? ? 64 A1 ? ? ? ? 50 64 89 25 ? ? ? ? 51 56 6A 00", 0x0);
-}
-
 MAKE_HOOK(EngineVGui_Paint, Utils::GetVFuncPtr(I::EngineVGui, 14), void, __fastcall,
 		  void* ecx, void* edx, int iMode)
 {

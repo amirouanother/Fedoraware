@@ -1,11 +1,6 @@
 #include "../Hooks.h"
 #include <intrin.h>
 
-namespace S
-{
-	MAKE_SIGNATURE(CBasePlayer_PostDataUpdate_SetAbsVelocityCall, CLIENT_DLL, "E8 ? ? ? ? 53 8B CF E8 ? ? ? ? 8D 47 F8 39 05", 0x5);
-}
-
 MAKE_HOOK(C_BaseEntity_SetAbsVelocity, S::CBaseEntity_SetAbsVelocity(), void, __fastcall, void* ecx, void* edx, const Vec3& vecAbsVelocity)
 {
 	static uintptr_t dwSetAbsVelocityCall = S::CBasePlayer_PostDataUpdate_SetAbsVelocityCall();
