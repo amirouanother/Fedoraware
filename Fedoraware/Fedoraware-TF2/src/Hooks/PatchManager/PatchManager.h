@@ -36,7 +36,7 @@ class BytePatch
 	}
 
 public:
-	BytePatch(DWORD address, const std::vector<BYTE>& patch)
+	BytePatch(uintptr_t address, const std::vector<BYTE>& patch)
 	{
 		m_Address = reinterpret_cast<LPVOID>(address);
 		m_Patch = patch;

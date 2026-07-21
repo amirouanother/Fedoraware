@@ -65,12 +65,12 @@ public:
 
 	T GetValue(void* base)
 	{
-		return *reinterpret_cast<T*>(reinterpret_cast<DWORD>(base) + dwOffset);
+		return *reinterpret_cast<T*>(reinterpret_cast<uintptr_t>(base) + dwOffset);
 	}
 
 	void SetValue(void* base, T val)
 	{
-		*reinterpret_cast<T*>(reinterpret_cast<DWORD>(base) + dwOffset) = val;
+		*reinterpret_cast<T*>(reinterpret_cast<uintptr_t>(base) + dwOffset) = val;
 	}
 };
 
@@ -136,5 +136,5 @@ inline int GetNetVar(const char* szClass, const char* szNetVar)
 #define NETVAR(_name, type, table, name) inline type &_name() \
 { \
 	static int offset = GetNetVar(table, name); \
-	return *reinterpret_cast<type *>(reinterpret_cast<DWORD>(this) + offset); \
+	return *reinterpret_cast<type *>(reinterpret_cast<uintptr_t>(this) + offset); \
 }

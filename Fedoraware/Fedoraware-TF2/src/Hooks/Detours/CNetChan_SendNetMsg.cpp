@@ -38,7 +38,7 @@ MAKE_HOOK(CNetChan_SendNetMsg, S::CNetChan_SendNetMsg(), bool, __fastcall,
 						{
 							if (const char* defaultValue = convarC->GetDefault())
 							{
-								respondMsg[7] = reinterpret_cast<DWORD>(defaultValue);
+								respondMsg[7] = reinterpret_cast<uintptr_t>(defaultValue);
 								I::Cvar->ConsoleColorPrintf({ 255, 0, 0, 255 }, "%s\n", msg.ToString()); //	mt everest
 								break;
 							}

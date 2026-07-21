@@ -74,11 +74,11 @@ void CKillstreaker::ApplyKillstreak()
 				streaksResource[3] = GetCurrentStreak();
 			}
 
-			auto streaksPlayer = reinterpret_cast<NetworkVar_m_nStreaks*>(*((DWORD*)pLocal + 1734)); //C_TFPlayer CTFPlayerShared::m_nStreaks
+			auto streaksPlayer = reinterpret_cast<NetworkVar_m_nStreaks*>(*((uintptr_t*)pLocal + 1734)); //C_TFPlayer CTFPlayerShared::m_nStreaks
 			if (!streaksPlayer ||
-				(DWORD)streaksPlayer < 0x1000 ||
+				(uintptr_t)streaksPlayer < 0x1000 ||
 				!streaksPlayer->m_Value ||
-				(DWORD)streaksPlayer->m_Value < 0x1000)
+				(uintptr_t)streaksPlayer->m_Value < 0x1000)
 			{
 				return;
 			}

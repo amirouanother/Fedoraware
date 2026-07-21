@@ -6,36 +6,47 @@
   </a>
 </p>
 
-# Fedoraware
+# Fedoraware - TF2 x64 Port
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/Fedoraware/Fedoraware)](/../../stargazers)
-[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/Fedoraware/Fedoraware/msbuild.yml?branch=main)](/../../actions)
-[![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/Fedoraware/Fedoraware)](/../../commits/)
 
 A free and open-source training software for Team Fortress 2, based on [SE-Owned](https://www.unknowncheats.me/forum/team-fortress-2-a/436430-seowned-featured-cheat.html).
 
+**This is a port of Fedoraware for the 64-bit version of Team Fortress 2 (tf_win64.exe).**
+
 ## Notes
 
-- It is required to use [dxlevel 90](https://docs.mastercomfig.com/latest/customization/launch_options/?h=#dxlevel-launch-options) or higher.
-- You might have issues with injecting if you are on Windows 10 upgraded from Windows 7.
-- The source code is most likely **DETECTED**, use [VAC Bypass by danielkrupinski](https://github.com/Fedoraware/VAC-Bypass-Loader/releases/tag/Release). In the event you get VAC banned, we are not responsible. Don't cheat on accounts you care about.
-- Read the [Fedoraware Documentation](https://fedoraware.github.io/Docs/) to learn more about Fedoraware and its features.
-- If you want to use Discord RPC, you need to download [discord-rpc.dll](https://github.com/Fedoraware/discord-rpc/releases/latest/) into your game folder.
+- Supports **x64** TF2 only (build configuration: `Release|x64` or `Debug|x64`)
+- Uses MinHook for detouring (x64 compatible)
+- Signatures have been updated for the x64 binary from reference implementations
+- **Some signatures may need updating** when TF2 updates - run the pattern scanner against the latest binaries
+- The source code is most likely **DETECTED**, use a proper VAC bypass
+- Requires [dxlevel 90](https://docs.mastercomfig.com/latest/customization/launch_options/?h=#dxlevel-launch-options) or higher
+
+## Building
+
+1. Open `Fedoraware.sln` in Visual Studio 2022
+2. Select `Release|x64` platform
+3. Build
 
 ## Guide
 
-- We suggest using [Fedoraloader](https://github.com/Fedoraware/Fedoraloader/releases) as it downloads the latest build and injects it with minimal crashing. It also includes a VAC bypass.
-- Alternatively, use an injector like [Xenos](https://github.com/DarthTon/Xenos/releases) to inject the dll into TF2. [(Tutorial)](https://www.youtube.com/watch?v=PT3kVA053IY)
-- **If you have any suggestions for the cheat, or questions about it, you can open a thread in [discussions](https://github.com/Fedoraware/Fedoraware/discussions).**
-- **If you have any problems, you can open an [issue](https://github.com/Fedoraware/Fedoraware/issues).**
+- Use an injector like [Xenos](https://github.com/DarthTon/Xenos/releases) to inject the dll into TF2
+- Read the [Fedoraware Documentation](https://fedoraware.github.io/Docs/) to learn more about features
 
-## Media
+## x64 Port Changes
 
-- [Fedoraware is the best free cheat in tf2 (by bean)](https://www.youtube.com/watch?v=FyeaMghYZL0)
-- [Playing as Michael Jackson (by km)](https://www.youtube.com/watch?v=cVD3BBEMNPo)
+- Updated all signatures to x64 patterns (from Amalgam reference)
+- Replaced `DWORD` with `uintptr_t` for all address/pointer types
+- Removed `__thiscall` calling convention (unified on x64)
+- Added x64 platform configurations to vcxproj and solution
+- Updated pattern scanning for 64-bit modules
+- Fixed struct member offsets for x64 layout
+- Updated interface resolution for x64
 
 ## Credits to
 
+- [Rei](https://github.com/rei-2) (Amalgam reference for x64 signatures)
 - [spook953](https://github.com/spook953)
 - [Lak3](https://github.com/Lak3)
 - [Baan](https://github.com/xxmyn)
@@ -44,4 +55,4 @@ A free and open-source training software for Team Fortress 2, based on [SE-Owned
 - [JAGNEmk](https://github.com/JAGNEmk)
 - [r00t](https://github.com/l-r00t-l)
 - [lykanfox](https://github.com/lykanfox)
-- ...and all other [contributors](/../../graphs/contributors)!
+- ...and all other contributors!

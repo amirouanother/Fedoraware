@@ -12,10 +12,10 @@ MAKE_HOOK(CTFPlayerShared_IsPlayerDominated, S::CTFPlayerShared_IsPlayerDominate
 
 	if (!bResult)
 	{
-		static DWORD dwDesired = S::CTFPlayerShared_IsPlayerDominated_Desired();
-		static DWORD dwJump = S::CTFPlayerShared_IsPlayerDominated_Jump();
+		static uintptr_t dwDesired = S::CTFPlayerShared_IsPlayerDominated_Desired();
+		static uintptr_t dwJump = S::CTFPlayerShared_IsPlayerDominated_Jump();
 
-		if (reinterpret_cast<DWORD>(_ReturnAddress()) == dwDesired)
+		if (reinterpret_cast<uintptr_t>(_ReturnAddress()) == dwDesired)
 		{
 			*static_cast<uintptr_t*>(_AddressOfReturnAddress()) = dwJump;
 		}

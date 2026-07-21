@@ -10,11 +10,11 @@ MAKE_HOOK(KeyValues_SetInt, S::KeyValues_SetInt(), void, __fastcall, void* ecx, 
 {
 	Hook.Original<FN>()(ecx, edx, szKeyName, iValue);
 
-	static DWORD dwDesired = S::KeyValues_SetInt_Desired();
-	static DWORD dwJump = S::KeyValues_SetInt_Jump();
+	static uintptr_t dwDesired = S::KeyValues_SetInt_Desired();
+	static uintptr_t dwJump = S::KeyValues_SetInt_Jump();
 
 	/* Scoreboard class reveal */
-	if (reinterpret_cast<DWORD>(_ReturnAddress()) == dwDesired && std::string_view(szKeyName).find("nemesis") != std::string_view::npos)
+	if (reinterpret_cast<uintptr_t>(_ReturnAddress()) == dwDesired && std::string_view(szKeyName).find("nemesis") != std::string_view::npos)
 	{
 		*static_cast<uintptr_t*>(_AddressOfReturnAddress()) = dwJump;
 	}

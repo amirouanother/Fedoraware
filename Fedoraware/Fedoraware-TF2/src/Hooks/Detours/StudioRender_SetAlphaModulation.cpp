@@ -1,7 +1,7 @@
 #include "../Hooks.h"
 
 MAKE_HOOK(StudioRender_SetAlphaModulation, Utils::GetVFuncPtr(I::StudioRender, 28), void, __fastcall,
-		  void* ecx, void* edx, float flAlpha)
+		  void* ecx, float flAlpha)
 {
-	Hook.Original<FN>()(ecx, edx, G::DrawingStaticProps ? Color::TOFLOAT(Vars::Colours::StaticPropModulation.Value.a) : flAlpha);
+	Hook.Original<FN>()(ecx, flAlpha);
 }

@@ -1,12 +1,12 @@
 #include "../Hooks.h"
 #include "../../Features/CritHack/CritHack.h"
 
-MAKE_HOOK(C_BaseCombatWeapon_IsAllowedToWithdrawFromCritBucket, S::CBaseCombatWeapon_IsAllowedToWithdrawFromCritBucket(), bool, __fastcall, void* ecx, void* edx, float flDamage)
+MAKE_HOOK(C_BaseCombatWeapon_IsAllowedToWithdrawFromCritBucket, S::CBaseCombatWeapon_IsAllowedToWithdrawFromCritBucket(), bool, __fastcall, void* ecx, float flDamage)
 {
 	if (F::CritHack.ProtectData)
 	{
 		return true;
 	}
 
-	return Hook.Original<FN>()(ecx, edx, flDamage);
+	return Hook.Original<FN>()(ecx, flDamage);
 }

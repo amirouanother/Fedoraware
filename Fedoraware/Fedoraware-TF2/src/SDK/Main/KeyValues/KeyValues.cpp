@@ -14,21 +14,21 @@ namespace S
 
 bool CKeyValUtils::LoadFromBuffer(KeyValues* key_value, char const* resource_name, const char* buffer, void* file_system, const char* path_id)
 {
-	using FN = int(__thiscall*)(KeyValues*, char const*, const char*, void*, const char*);
+	using FN = int(*)(KeyValues*, char const*, const char*, void*, const char*);
 	static FN loadFromBuffer = reinterpret_cast<FN>(S::KeyValUtils_LoadFromBuffer());
 	return loadFromBuffer(key_value, resource_name, buffer, file_system, path_id);
 }
 
 KeyValues* CKeyValUtils::Initialize(KeyValues* key_value, char* name)
 {
-	using FN = KeyValues * (__thiscall*)(KeyValues*, char*);
+	using FN = KeyValues * (*)(KeyValues*, char*);
 	static FN initialize = reinterpret_cast<FN>(S::KeyValUtils_Initialize());
 	return initialize(key_value, name);
 }
 
 void KeyValues::Initialize(char* name)
 {
-	using FN = KeyValues * (__thiscall*)(KeyValues*, char*);
+	using FN = KeyValues * (*)(KeyValues*, char*);
 	static FN initialize = reinterpret_cast<FN>(S::KeyValUtils_Initialize());
 	initialize(this, name);
 }
@@ -42,14 +42,14 @@ KeyValues::KeyValues(const char* name)
 
 KeyValues* KeyValues::FindKey(const char* keyName, bool bCreate)
 {
-	using FN = KeyValues * (__thiscall*)(KeyValues*, const char*, bool);
+	using FN = KeyValues * (*)(KeyValues*, const char*, bool);
 	static FN findKey = reinterpret_cast<FN>(S::KeyValues_FindKey());
 	return findKey(this, keyName, bCreate);
 }
 
 KeyValues* KeyValues::AddSubkey(KeyValues* pSubkey)
 {
-	static auto addSubkey = reinterpret_cast<KeyValues * (__thiscall*)(KeyValues*, KeyValues*)>(S::KeyValues_AddSubkey());
+	static auto addSubkey = reinterpret_cast<KeyValues * (*)(KeyValues*, KeyValues*)>(S::KeyValues_AddSubkey());
 	return addSubkey(this, pSubkey);
 }
 

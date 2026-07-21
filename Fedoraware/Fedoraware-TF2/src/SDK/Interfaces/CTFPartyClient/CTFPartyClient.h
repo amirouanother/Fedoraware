@@ -24,75 +24,75 @@ class CTFPartyClient
 public:
 	void LoadSavedCasualCriteria()
 	{
-		static auto FN = S::CTFPartyClient_LoadSavedCasualCriteria.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFPartyClient_LoadSavedCasualCriteria.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	bool BInStandbyQueue()
 	{
-		static auto FN = S::CTFPartyClient_BInStandbyQueue.As<bool(__thiscall*)(void*)>();
+		static auto FN = S::CTFPartyClient_BInStandbyQueue.As<bool(*)(void*)>();
 		return FN(this);
 	}
 
 	//CTFPartyClient::BCanQueueForMatch(ETFMatchGroup, CUtlVector<CTFPartyClient::QueueEligibilityData_t, CUtlMemory<CTFPartyClient::QueueEligibilityData_t, int>>&)
 	bool BCanQueueForMatch(int eMatchGroup, void* vecQueueEligibilityData)
 	{
-		static auto FN = S::CTFPartyClient_BCanQueueForMatch.As<bool(__thiscall*)(void*, int, void*)>();
+		static auto FN = S::CTFPartyClient_BCanQueueForMatch.As<bool(*)(void*, int, void*)>();
 		return FN(this, eMatchGroup, vecQueueEligibilityData);
 	}
 
 	bool BCanQueueForStandby()
 	{
-		static auto FN = S::CTFPartyClient_BCanQueueForStandby.As<bool(__thiscall*)(void*)>();
+		static auto FN = S::CTFPartyClient_BCanQueueForStandby.As<bool(*)(void*)>();
 		return FN(this);
 	}
 
 	bool BInQueueForMatchGroup(int eMatchGroup)
 	{
-		static auto FN = S::CTFPartyClient_BInQueueForMatchGroup.As<bool(__thiscall*)(void*, int)>();
+		static auto FN = S::CTFPartyClient_BInQueueForMatchGroup.As<bool(*)(void*, int)>();
 		return FN(this, eMatchGroup);
 	}
 
 	//CTFPartyOptions&
 	bool BMakeUpdateMsg(void* pPartyOptions)
 	{
-		static auto FN = S::CTFPartyClient_BMakeUpdateMsg.As<bool(__thiscall*)(void*, void*)>();
+		static auto FN = S::CTFPartyClient_BMakeUpdateMsg.As<bool(*)(void*, void*)>();
 		return FN(this, pPartyOptions);
 	}
 
 	void CancelOutgoingJoinRequestOrIncomingInvite(CSteamID steamID)
 	{
-		static auto FN = S::CTFPartyClient_CancelOutgoingJoinRequestOrIncomingInvite.As<void(__thiscall*)(void*, CSteamID)>();
+		static auto FN = S::CTFPartyClient_CancelOutgoingJoinRequestOrIncomingInvite.As<void(*)(void*, CSteamID)>();
 		return FN(this, steamID);
 	}
 
 	void CheckResetSentOptions()
 	{
-		static auto FN = S::CTFPartyClient_CheckResetSentOptions.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFPartyClient_CheckResetSentOptions.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	void OnInQueueChanged()
 	{
-		static auto FN = S::CTFPartyClient_OnInQueueChanged.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFPartyClient_OnInQueueChanged.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	void RequestQueueForStandby()
 	{
-		static auto FN = S::CTFPartyClient_RequestQueueForStandby.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFPartyClient_RequestQueueForStandby.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	bool UpdateActiveParty()
 	{
-		static auto FN = S::CTFPartyClient_UpdateActiveParty.As<bool(__thiscall*)(void*)>();
+		static auto FN = S::CTFPartyClient_UpdateActiveParty.As<bool(*)(void*)>();
 		return FN(this);
 	}
 
 	void RequestQueueForMatch(int eMatchGroup)
 	{
-		static auto FN = S::CTFPartyClient_RequestQueueForMatch.As<void(__thiscall*)(void*, int)>();
+		static auto FN = S::CTFPartyClient_RequestQueueForMatch.As<void(*)(void*, int)>();
 		return FN(this, eMatchGroup);
 	}
 };

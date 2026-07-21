@@ -38,79 +38,79 @@ class CTFGCClientSystem
 public:
 	bool Init()
 	{
-		static auto FN = S::CTFGCClientSystem_Init.As<bool(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_Init.As<bool(*)(void*)>();
 		return FN(this);
 	}
 
 	void PreInitGC()
 	{
-		static auto FN = S::CTFGCClientSystem_PreInitGC.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_PreInitGC.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	void PostInit()
 	{
-		static auto FN = S::CTFGCClientSystem_PostInit.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_PostInit.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	void PostInitGC()
 	{
-		static auto FN = S::CTFGCClientSystem_PostInitGC.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_PostInitGC.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	void ReceivedClientWelcome(const int& msg)
 	{
-		static auto FN = S::CTFGCClientSystem_ReceivedClientWelcome.As<void(__thiscall*)(void*, const int&)>();
+		static auto FN = S::CTFGCClientSystem_ReceivedClientWelcome.As<void(*)(void*, const int&)>();
 		return FN(this, msg);
 	}
 
 	void Shutdown()
 	{
-		static auto FN = S::CTFGCClientSystem_Shutdown.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_Shutdown.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	void Update(float frametime)
 	{
-		static auto FN = S::CTFGCClientSystem_Update.As<void(__thiscall*)(void*, float)>();
+		static auto FN = S::CTFGCClientSystem_Update.As<void(*)(void*, float)>();
 		return FN(this, frametime);
 	}
 
 	CTFPartyClient* GetParty()
 	{
-		static auto FN = S::CTFGCClientSystem_GetParty.As<CTFPartyClient*(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_GetParty.As<CTFPartyClient*(*)(void*)>();
 		return FN(this);
 	}
 
 	bool BHaveLiveMatch()
 	{
-		static auto FN = S::CTFGCClientSystem_BHaveLiveMatch.As<bool(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_BHaveLiveMatch.As<bool(*)(void*)>();
 		return FN(this);
 	}
 
 	int GetNumMatchInvites()
 	{
-		static auto FN = S::CTFGCClientSystem_GetNumMatchInvites.As<int(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_GetNumMatchInvites.As<int(*)(void*)>();
 		return FN(this);
 	}
 
 	bool JoinMMMatch()
 	{
-		static auto FN = S::CTFGCClientSystem_JoinMMMatch.As<bool(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_JoinMMMatch.As<bool(*)(void*)>();
 		return FN(this);
 	}
 
 	bool BConnectedToMatchServer(bool bLiveMatch)
 	{
-		static auto FN = S::CTFGCClientSystem_BConnectedToMatchServer.As<bool(__thiscall*)(void*, bool)>();
+		static auto FN = S::CTFGCClientSystem_BConnectedToMatchServer.As<bool(*)(void*, bool)>();
 		return FN(this, bLiveMatch);
 	}
 
 	bool BGetLocalPlayerBadgeInfoForTour(int iTourIndex, uint32* pnBadgeLevel, uint32* pnCompletedChallenges)
 	{
-		static auto FN = S::CTFGCClientSystem_BGetLocalPlayerBadgeInfoForTour.As<bool(__thiscall*)(void*, int, uint32*, uint32*)>();
+		static auto FN = S::CTFGCClientSystem_BGetLocalPlayerBadgeInfoForTour.As<bool(*)(void*, int, uint32*, uint32*)>();
 		return FN(this, iTourIndex, pnBadgeLevel, pnCompletedChallenges);
 	}
 
@@ -122,43 +122,43 @@ public:
 
 	bool BIsMatchGroupDisabled(int eMatchGroup)
 	{
-		static auto FN = S::CTFGCClientSystem_BIsMatchGroupDisabled.As<bool(__thiscall*)(void*, int)>();
+		static auto FN = S::CTFGCClientSystem_BIsMatchGroupDisabled.As<bool(*)(void*, int)>();
 		return FN(this, eMatchGroup);
 	}
 
 	void ConnectToServer(const char* connect)
 	{
-		static auto FN = S::CTFGCClientSystem_ConnectToServer.As<void(__thiscall*)(void*, const char*)>();
+		static auto FN = S::CTFGCClientSystem_ConnectToServer.As<void(*)(void*, const char*)>();
 		return FN(this, connect);
 	}
 
 	void PingThink()
 	{
-		static auto FN = S::CTFGCClientSystem_PingThink.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_PingThink.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	void DumpPing()
 	{
-		static auto FN = S::CTFGCClientSystem_DumpPing.As<void(__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_DumpPing.As<void(*)(void*)>();
 		return FN(this);
 	}
 
 	void FireGameEvent(CGameEvent* pEvent)
 	{
-		static auto FN = S::CTFGCClientSystem_FireGameEvent.As<void(__thiscall*)(void*, CGameEvent*)>();
+		static auto FN = S::CTFGCClientSystem_FireGameEvent.As<void(*)(void*, CGameEvent*)>();
 		return FN(this, pEvent);
 	}
 
 	void* GetLobby()
 	{
-		static auto FN = S::CTFGCClientSystem_GetLobby.As<void* (__thiscall*)(void*)>();
+		static auto FN = S::CTFGCClientSystem_GetLobby.As<void* (*)(void*)>();
 		return FN(this);
 	}
 
 	void* GetMatchInvite(void* pUnknown1, void* pUnknown2)
 	{
-		static auto FN = S::CTFGCClientSystem_GetMatchInvite.As<void* (__thiscall*)(void*, void*, void*)>();
+		static auto FN = S::CTFGCClientSystem_GetMatchInvite.As<void* (*)(void*, void*, void*)>();
 		return FN(this, pUnknown1, pUnknown2);
 	}
 

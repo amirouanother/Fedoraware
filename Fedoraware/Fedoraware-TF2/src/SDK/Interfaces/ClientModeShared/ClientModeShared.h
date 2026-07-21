@@ -13,7 +13,7 @@ public:
 
 	void StartMessageMode(int iMessageModeType)
 	{
-		typedef void(__thiscall* FN)(void*, int);
+		typedef void(* FN)(void*, int);
 		GetVFunc<FN>(this, 20)(this, iMessageModeType);
 	}
 };
@@ -26,8 +26,8 @@ public:
 
 	bool IsChatPanelOutOfFocus()
 	{
-		void* CHudChat = GetVFunc<void*(__thiscall *)(void*)>(this, 19)(this);
-		return (CHudChat && !*(float *)((DWORD)CHudChat + 0xFC));
+		void* CHudChat = GetVFunc<void*( *)(void*)>(this, 19)(this);
+		return (CHudChat && !*(float *)((uintptr_t)CHudChat + 0xFC));
 	}
 };
 

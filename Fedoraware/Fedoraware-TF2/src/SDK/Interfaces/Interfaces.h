@@ -50,7 +50,8 @@
 
 namespace S
 {
-	MAKE_SIGNATURE(CClientState_ForceFullUpdate, ENGINE_DLL, "56 8B F1 83 BE ? ? ? ? ? 74 1D", 0x0);
+	MAKE_SIGNATURE(CClientState_ForceFullUpdate, ENGINE_DLL, "48 89 5C 24 ? 57 48 83 EC ? 48 8B F9 48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 86", 0x0);
+	MAKE_SIGNATURE(ViewRender_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05 ? ? ? ? 48 89 05", 0x2);
 }
 
 class CThirdPersonManager
@@ -171,8 +172,7 @@ public:
 
 	void ForceFullUpdate()
 	{
-		using FN = void(__thiscall*)(CClientState*);
-		static FN fnForceFullUpdate = S::CClientState_ForceFullUpdate.As<void(__thiscall*)(CClientState*)>();
+		static auto fnForceFullUpdate = S::CClientState_ForceFullUpdate.As<void(*)(CClientState*)>();
 		return fnForceFullUpdate(this);
 	}
 };

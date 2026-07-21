@@ -24,8 +24,8 @@ namespace S
 MAKE_HOOK(EngineVGui_Paint, Utils::GetVFuncPtr(I::EngineVGui, 14), void, __fastcall,
 		  void* ecx, void* edx, int iMode)
 {
-	static auto StartDrawing = reinterpret_cast<void(__thiscall*)(void*)>(S::StartDrawing());
-	static auto FinishDrawing = reinterpret_cast<void(__thiscall*)(void*)>(S::FinishDrawing());
+	static auto StartDrawing = reinterpret_cast<void(*)(void*)>(S::StartDrawing());
+	static auto FinishDrawing = reinterpret_cast<void(*)(void*)>(S::FinishDrawing());
 
 	if (!g_ScreenSize.w || !g_ScreenSize.h)
 	{

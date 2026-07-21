@@ -86,11 +86,11 @@ public: //Netvars
 
 
 public: //Virtuals
-	M_VIRTUALGET(WeaponID, int, this, int(__thiscall*)(void*), 381)
-		M_VIRTUALGET(Slot, int, this, int(__thiscall*)(void*), 330)
-		M_VIRTUALGET(DamageType, int, this, int(__thiscall*)(void*), 340)
-		M_VIRTUALGET(FinishReload, void, this, void(__thiscall*)(void*), 275)
-		M_VIRTUALGET(BulletSpread, Vec3&, this, Vec3& (__thiscall*)(void*), 286)
+	M_VIRTUALGET(WeaponID, int, this, int(*)(void*), 381)
+		M_VIRTUALGET(Slot, int, this, int(*)(void*), 330)
+		M_VIRTUALGET(DamageType, int, this, int(*)(void*), 340)
+		M_VIRTUALGET(FinishReload, void, this, void(*)(void*), 275)
+		M_VIRTUALGET(BulletSpread, Vec3&, this, Vec3& (*)(void*), 286)
 
 public: //Everything else, lol
 	__inline float GetSmackTime()
@@ -112,20 +112,20 @@ public: //Everything else, lol
 	inline int& m_iWeaponMode()
 	{
 		static int offset = 716;
-		return *reinterpret_cast<int*>(reinterpret_cast<DWORD>(this) + offset);
+		return *reinterpret_cast<int*>(reinterpret_cast<uintptr_t>(this) + offset);
 	}
 
 	inline int& m_iCurrentSeed()
 	{
 		static int offset = 727;
-		return *reinterpret_cast<int*>(reinterpret_cast<DWORD>(this) + offset);
+		return *reinterpret_cast<int*>(reinterpret_cast<uintptr_t>(this) + offset);
 	}
 
 	inline bool GetLocalizedBaseItemName(wchar_t(&szItemName)[128])
 	{
 		static auto fnGetLocalizedBaseItemName = S::GetLocalizedBaseItemName.As<bool(__cdecl*)(wchar_t(&)[128], const void*, const void*)>();
 		static auto fnGLocalizationProvider = S::GLocalizationProvider.As<void* (__cdecl*)()>();
-		static auto fnGetStaticData = S::C_EconItemView_GetStaticData.As<void* (__thiscall*)(void*)>();
+		static auto fnGetStaticData = S::C_EconItemView_GetStaticData.As<void* (*)(void*)>();
 
 		void* pItem = m_Item();
 		const void* pItemStaticData = fnGetStaticData(pItem);
@@ -145,8 +145,8 @@ public: //Everything else, lol
 
 	inline const char* GetName()
 	{
-		//static auto C_BaseCombatWeapon_GetName = S::C_BaseCombatWeapon_GetName.As<const char* (__thiscall*)(void*)>();
-		return GetVFunc<const char* (__thiscall*)(void*)>(this, 333)(this);
+		//static auto C_BaseCombatWeapon_GetName = S::C_BaseCombatWeapon_GetName.As<const char* (*)(void*)>();
+		return GetVFunc<const char* (*)(void*)>(this, 333)(this);
 		//return C_BaseCombatWeapon_GetName(this);
 	}
 
@@ -205,46 +205,46 @@ public: //Everything else, lol
 
 	__inline float GetSwingRange(CBaseEntity* pLocal)
 	{
-		return static_cast<float>(GetVFunc<int(__thiscall*)(CBaseEntity*)>(this, 455)(pLocal));
+		return static_cast<float>(GetVFunc<int(*)(CBaseEntity*)>(this, 455)(pLocal));
 	}
 
 	__inline float GetWeaponSpread()
 	{
-		static auto fnGetWeaponSpread = S::CBaseCombatWeapon_GetWeaponSpread.As<float(__thiscall*)(decltype(this))>();
+		static auto fnGetWeaponSpread = S::CBaseCombatWeapon_GetWeaponSpread.As<float(*)(decltype(this))>();
 		return fnGetWeaponSpread(this);
 	}
 
 	/*__inline bool WillCrit() {
 		static auto dwCalcIsAttackCritical = g_Pattern.Find(LCLIENT_DLL, L"55 8B EC 83 EC 18 56 57 6A 00 68 ? ? ? ? 68 ? ? ? ? 6A 00 8B F9 E8 ? ? ? ? 50 E8 ? ? ? ? 8B F0 83 C4 14 89 75 EC");
-		return reinterpret_cast<bool(__thiscall*)(decltype(this))>(dwCalcIsAttackCritical);
+		return reinterpret_cast<bool(*)(decltype(this))>(dwCalcIsAttackCritical);
 	}*/
 
 	/*__inline bool CalcIsAttackCritical() {
-		typedef bool(__thiscall* OriginalFn)(CBaseCombatWeapon*);
-		static DWORD dwFunc = g_Pattern.Find(LCLIENT_DLL, L"55 8B EC 83 EC 18 56 57 6A 00 68 ? ? ? ? 68 ? ? ? ? 6A 00 8B F9 E8 ? ? ? ? 50 E8 ? ? ? ? 8B F0 83 C4 14 89 75 EC");
+		typedef bool(* OriginalFn)(CBaseCombatWeapon*);
+		static uintptr_t dwFunc = g_Pattern.Find(LCLIENT_DLL, L"55 8B EC 83 EC 18 56 57 6A 00 68 ? ? ? ? 68 ? ? ? ? 6A 00 8B F9 E8 ? ? ? ? 50 E8 ? ? ? ? 8B F0 83 C4 14 89 75 EC");
 		return ((OriginalFn)dwFunc)(this);
 	}*/
 
 	__inline bool DoSwingTrace(CGameTrace& Trace)
 	{
-		return GetVFunc<int(__thiscall*)(CGameTrace&)>(this, 454)(Trace);
+		return GetVFunc<int(*)(CGameTrace&)>(this, 454)(Trace);
 	}
 
 	__inline bool DoSwingTraceInternal(CGameTrace& Trace)
 	{
-		static auto fnDoSwingTraceInternal = S::CTFWeaponBaseMelee_DoSwingTraceInternal.As<bool(__thiscall*)(decltype(this), CGameTrace&, bool, void*)>();
+		static auto fnDoSwingTraceInternal = S::CTFWeaponBaseMelee_DoSwingTraceInternal.As<bool(*)(decltype(this), CGameTrace&, bool, void*)>();
 		return fnDoSwingTraceInternal(this, Trace, false, nullptr);
 	}
 
 	__inline int LookupAttachment(const char* pAttachmentName)
 	{
 		const auto pRend = Renderable();
-		return GetVFunc<int(__thiscall*)(void*, const char*)>(pRend, 35)(pRend, pAttachmentName);
+		return GetVFunc<int(*)(void*, const char*)>(pRend, 35)(pRend, pAttachmentName);
 	}
 
 	__inline bool GetAttachment(int number, Vec3& origin)
 	{
-		return GetVFunc<bool(__thiscall*)(void*, int, Vec3&)>(this, 71)(this, number, origin);
+		return GetVFunc<bool(*)(void*, int, Vec3&)>(this, 71)(this, number, origin);
 	}
 
 
@@ -254,14 +254,14 @@ public: //Everything else, lol
 		if (const auto& pOwner = I::ClientEntityList->GetClientEntityFromHandle(GethOwner()))
 		{
 			const int nOldFov = pOwner->GetFov(); pOwner->SetFov(-1);
-			bResult = GetVFunc<bool(__thiscall*)(decltype(this), bool, CBaseEntity*)>(this, 425)(this, bHeadShot, nullptr);
+			bResult = GetVFunc<bool(*)(decltype(this), bool, CBaseEntity*)>(this, 425)(this, bHeadShot, nullptr);
 			pOwner->SetFov(nOldFov);
 		} return bResult;
 	}
 
 	__inline bool CanFireRandomCriticalShot(const float flCritChance)
 	{
-		return GetVFunc<bool(__thiscall*)(decltype(this), float)>(this, 424)(this, flCritChance);
+		return GetVFunc<bool(*)(decltype(this), float)>(this, 424)(this, flCritChance);
 	}
 
 	__inline bool CanWeaponHeadShot()
@@ -344,13 +344,13 @@ public: //Everything else, lol
 
 	__inline void GetSpreadAngles(Vec3& vOut)
 	{
-		static auto fnGetSpreadAngles = S::CBaseCombatWeapon_GetSpreadAngles.As<void(__thiscall*)(decltype(this), Vec3&)>();
+		static auto fnGetSpreadAngles = S::CBaseCombatWeapon_GetSpreadAngles.As<void(*)(decltype(this), Vec3&)>();
 		fnGetSpreadAngles(this, vOut);
 	}
 
 	__inline void GetProjectileFireSetup(CBaseEntity* pPlayer, Vec3 vOffset, Vec3* vSrc, Vec3* vForward, bool bHitTeam, float flEndDist)
 	{
-		static auto fnGetProjectileFireSetu = S::CBaseCombatWeapon_GetProjectileFireSetup.As<void(__thiscall*)(CBaseEntity*, CBaseEntity*, Vec3, Vec3*, Vec3*, bool, float)>();
+		static auto fnGetProjectileFireSetu = S::CBaseCombatWeapon_GetProjectileFireSetup.As<void(*)(CBaseEntity*, CBaseEntity*, Vec3, Vec3*, Vec3*, bool, float)>();
 		fnGetProjectileFireSetu(this, pPlayer, vOffset, vSrc, vForward, bHitTeam, flEndDist);
 	}
 
@@ -369,7 +369,7 @@ public: //Everything else, lol
 
 	__inline bool CalcIsAttackCritical()
 	{
-		using FN = bool(__thiscall*)(void*);
+		using FN = bool(*)(void*);
 		static auto fnCalcIsAttackCritical = S::CBaseCombatWeapon_CalcIsAttackCritical.As<FN>();
 		
 		return fnCalcIsAttackCritical(this);
@@ -377,20 +377,20 @@ public: //Everything else, lol
 
 	__inline bool CalcIsAttackCriticalHelper()
 	{
-		using FN = bool(__thiscall*)(CBaseCombatWeapon*);
+		using FN = bool(*)(CBaseCombatWeapon*);
 		static FN fnCalcIsAttackCriticalHelper = S::CBaseCombatWeapon_CalcIsAttackCriticalHelper.As<FN>();
 		return fnCalcIsAttackCriticalHelper(this);
 	}
 
 	__inline bool CalcIsAttackCriticalHelperMelee()
 	{
-		using FN = bool(__thiscall*)(CBaseCombatWeapon*);
+		using FN = bool(*)(CBaseCombatWeapon*);
 		static FN fnCalcIsAttackCriticalHelper = S::CBaseCombatWeapon_CalcIsAttackCriticalHelperMelee.As<FN>();
 		return fnCalcIsAttackCriticalHelper(this);
 	}
 
 	__inline void UpdateAllViewmodelAddons() {
-		using FN = void(__thiscall*)(CBaseCombatWeapon*);
+		using FN = void(*)(CBaseCombatWeapon*);
 		static FN fnUpdateAllViewmodelAddons = S::CTFWeaponBase_UpdateAllViewmodelAddons.As<FN>();
 		return fnUpdateAllViewmodelAddons(this);
 	}
@@ -440,7 +440,7 @@ public: //Everything else, lol
 
 	__inline float GetFireRate()
 	{
-		typedef float(__thiscall* FN)(PVOID);
+		typedef float(* FN)(PVOID);
 		return GetVFunc<FN>(this, 359)(this);
 	}
 
@@ -452,6 +452,6 @@ class CTFWeaponInvis : public CBaseCombatWeapon
 public:
 	__inline bool HasFeignDeath()
 	{
-		return static_cast<bool>(GetVFunc<bool(__thiscall*)(CTFWeaponInvis*)>(this, 522));
+		return static_cast<bool>(GetVFunc<bool(*)(CTFWeaponInvis*)>(this, 522));
 	}
 };

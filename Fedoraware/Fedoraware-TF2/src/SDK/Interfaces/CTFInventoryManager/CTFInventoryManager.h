@@ -11,6 +11,6 @@ class CTFInventoryManager
 public:
 	void* GetItemByBackpackPosition(int iBackpackPosition)
 	{
-		return S::CTFInventoryManager_GetItemByBackpackPosition.As<void* (__thiscall*)(void*, int)>()(this, iBackpackPosition);
+		return S::CTFInventoryManager_GetItemByBackpackPosition.As<void* (*)(void*, int)>()(this, iBackpackPosition);
 	}
 };

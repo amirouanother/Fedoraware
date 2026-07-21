@@ -45,10 +45,10 @@ MAKE_HOOK(ViewRender_RenderView, Utils::GetVFuncPtr(I::ViewRender, 6), void, __f
 			tCustomView.origin = G::FreecamPos;
 		}
 
-		Hook.Original<void(__thiscall*)(void*, const CViewSetup&, int, int)>()(ecx, tCustomView, nClearFlags, whatToDraw);
+		Hook.Original<void(*)(void*, const CViewSetup&, int, int)>()(ecx, tCustomView, nClearFlags, whatToDraw);
 		if (!(I::EngineClient->IsTakingScreenshot() && Vars::Visuals::CleanScreenshots.Value)) { F::CameraWindow.RenderView(ecx, view); }
 		return;
 	}
-	Hook.Original<void(__thiscall*)(void*, const CViewSetup&, int, int)>()(ecx, view, nClearFlags, whatToDraw);
+	Hook.Original<void(*)(void*, const CViewSetup&, int, int)>()(ecx, view, nClearFlags, whatToDraw);
 	if (!(I::EngineClient->IsTakingScreenshot() && Vars::Visuals::CleanScreenshots.Value)) { F::CameraWindow.RenderView(ecx, view); }
 }

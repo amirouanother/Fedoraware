@@ -667,7 +667,7 @@ void CVisuals::DrawServerHitboxes()
 		using GetServerAnimating_t = void* (*)(int);
 		static auto GetServerAnimating = S::GetServerAnimating.As<GetServerAnimating_t>();
 
-		using DrawServerHitboxes_t = void(__thiscall*)(void*, float, bool); // C_BaseAnimating, Duration, MonoColour
+		using DrawServerHitboxes_t = void(*)(void*, float, bool); // C_BaseAnimating, Duration, MonoColour
 		static auto DrawServerHitboxes = S::DrawServerHitboxes.As<DrawServerHitboxes_t>();
 
 		const auto pLocal = I::ClientEntityList->GetClientEntity(I::EngineClient->GetLocalPlayer());

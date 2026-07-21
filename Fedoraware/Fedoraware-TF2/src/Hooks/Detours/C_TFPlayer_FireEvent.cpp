@@ -14,7 +14,7 @@ int ColorToInt(const Color_t& col)
 MAKE_HOOK(C_TFPlayer_FireEvent, S::CTFPlayer_FireEvent(), void, __fastcall,
     CBaseEntity* ecx, void* edx, const Vector& origin, const QAngle& angles, int event_, const char* options)
 {
-    static auto fnSpawnHalloweenSpellFootsteps = S::SpawnHalloweenSpellFootsteps.As<void* (__thiscall*)(CBaseEntity*, ParticleAttachment_t, int)>();
+    static auto fnSpawnHalloweenSpellFootsteps = S::SpawnHalloweenSpellFootsteps.As<void* (*)(CBaseEntity*, ParticleAttachment_t, int)>();
 
     if (!Vars::Visuals::HalloweenSpellFootsteps.Value || event_ != 7001 || ecx != g_EntityCache.GetLocal())
     {

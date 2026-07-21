@@ -6,7 +6,7 @@ class CMoveHelper
 public:
 	void SetHost(CBaseEntity *host) 
 	{
-		typedef void(__thiscall *FN)(PVOID, CBaseEntity *);
+		typedef void( *FN)(PVOID, CBaseEntity *);
 		GetVFunc<FN>(this, 0)(this, host);
 	}
 };

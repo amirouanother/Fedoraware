@@ -6,19 +6,19 @@ class CClientEntityList
 public:
 	CBaseEntity *GetClientEntity(int nEntityIndex)
 	{
-		typedef CBaseEntity *(__thiscall *FN)(PVOID, int);
+		typedef CBaseEntity *( *FN)(PVOID, int);
 		return GetVFunc<FN>(this, 3)(this, nEntityIndex);
 	}
 
 	CBaseEntity *GetClientEntityFromHandle(int hEntity)
 	{
-		typedef CBaseEntity *(__thiscall *FN)(PVOID, int);
+		typedef CBaseEntity *( *FN)(PVOID, int);
 		return GetVFunc<FN>(this, 4)(this, hEntity);
 	}
 
 	int GetHighestEntityIndex()
 	{
-		typedef int(__thiscall *FN)(PVOID);
+		typedef int( *FN)(PVOID);
 		return GetVFunc<FN>(this, 6)(this);
 	}
 };

@@ -148,7 +148,7 @@ public:
 	//virtual void EnableInput(bool bEnable) = 0;
 	void ResetInputStateVFunc()
 	{
-		typedef void(__thiscall* OrgFn)(PVOID);
+		typedef void(* OrgFn)(PVOID);
 		GetVFunc<OrgFn>(this, 25)(this);
 	}
 };

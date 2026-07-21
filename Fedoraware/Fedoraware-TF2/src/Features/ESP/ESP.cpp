@@ -478,7 +478,7 @@ void CESP::DrawPlayers(CBaseEntity* pLocal)
 						S::CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot()
 						);
 
-					static auto getItemName = reinterpret_cast<const char* (__thiscall*)(void*)>(
+					static auto getItemName = reinterpret_cast<const char* (*)(void*)>(
 						S::C_EconItemView_GetItemName()
 						);
 
@@ -546,7 +546,7 @@ void CESP::DrawPlayers(CBaseEntity* pLocal)
 					}
 
 
-					//static auto C_EconItemView_GetStaticData = reinterpret_cast<void* (__thiscall*)(void*)>(
+					//static auto C_EconItemView_GetStaticData = reinterpret_cast<void* (*)(void*)>(
 					//	g_Pattern.Find(LCLIENT_DLL, L"0F B7 41 24 50 E8 ? ? ? ? 8B C8 E8 ? ? ? ? 6A 00 68 ? ? ? ? 68 ? ? ? ? 6A 00 50 E8 ? ? ? ? 83 C4 14 C3")
 					//	);
 

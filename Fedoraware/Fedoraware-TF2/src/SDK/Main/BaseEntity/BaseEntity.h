@@ -252,43 +252,43 @@ public: //Netvars & conditions
 		NETVAR(m_nStreaks, void*, "CTFPlayer", "m_nStreaks");
 
 public: //Virtuals
-	M_VIRTUALGET(UpdateGlowEffect, void, this, void(__thiscall*)(void*), 226)
-		M_VIRTUALGET(MaxHealth, int, this, int(__thiscall*)(void*), 107)
-		M_VIRTUALGET(AbsAngles, const Vec3&, this, Vec3& (__thiscall*)(void*), 10)
-		M_VIRTUALGET(AbsOrigin, const Vec3&, this, Vec3& (__thiscall*)(void*), 9)
+	M_VIRTUALGET(UpdateGlowEffect, void, this, void(*)(void*), 226)
+		M_VIRTUALGET(MaxHealth, int, this, int(*)(void*), 107)
+		M_VIRTUALGET(AbsAngles, const Vec3&, this, Vec3& (*)(void*), 10)
+		M_VIRTUALGET(AbsOrigin, const Vec3&, this, Vec3& (*)(void*), 9)
 
 public: //Virtuals from renderable
 	__inline void* Renderable() { return reinterpret_cast<void*>((reinterpret_cast<uintptr_t>(this) + 0x4)); }
 
-	M_VIRTUALGET(UpdateClientSideAnimation, void, Renderable(), void(__thiscall*)(void*), 3)
-		M_VIRTUALGET(RenderAngles, const Vec3&, Renderable(), const Vec3& (__thiscall*)(void*), 2)
-		M_VIRTUALGET(Model, model_t*, Renderable(), model_t* (__thiscall*)(void*), 9)
-		M_VIRTUALGET(RgflCoordinateFrame, matrix3x4&, Renderable(), matrix3x4& (__thiscall*)(void*), 34)
+	M_VIRTUALGET(UpdateClientSideAnimation, void, Renderable(), void(*)(void*), 3)
+		M_VIRTUALGET(RenderAngles, const Vec3&, Renderable(), const Vec3& (*)(void*), 2)
+		M_VIRTUALGET(Model, model_t*, Renderable(), model_t* (*)(void*), 9)
+		M_VIRTUALGET(RgflCoordinateFrame, matrix3x4&, Renderable(), matrix3x4& (*)(void*), 34)
 
 		__inline void GetRenderBounds(Vec3& vMins, Vec3& vMaxs)
 	{
 		const auto pRend = Renderable();
-		GetVFunc<void(__thiscall*)(void*, Vec3&, Vec3&)>(pRend, 20)(pRend, vMins, vMaxs);
+		GetVFunc<void(*)(void*, Vec3&, Vec3&)>(pRend, 20)(pRend, vMins, vMaxs);
 	}
 
 	__inline bool SetupBones(matrix3x4* pOut, int nMax, int nMask, float flTime)
 	{
 		const auto pRend = Renderable();
-		return GetVFunc<bool(__thiscall*)(void*, matrix3x4*, int, int, float)>(pRend, 16)(pRend, pOut, nMax, nMask, flTime);
+		return GetVFunc<bool(*)(void*, matrix3x4*, int, int, float)>(pRend, 16)(pRend, pOut, nMax, nMask, flTime);
 	}
 
 	__inline int DrawModel(int nFlags)
 	{
 		const auto pRend = Renderable();
-		return GetVFunc<int(__thiscall*)(void*, int)>(pRend, 10)(pRend, nFlags);
+		return GetVFunc<int(*)(void*, int)>(pRend, 10)(pRend, nFlags);
 	}
 
 public: //Virtuals from networkable
 	__inline IClientNetworkable* Networkable() { return reinterpret_cast<IClientNetworkable*>((reinterpret_cast<uintptr_t>(this) + 0x8)); }
 
-	M_VIRTUALGET(ClientClass, CClientClass*, Networkable(), CClientClass* (__thiscall*)(void*), 2)
-		M_VIRTUALGET(Dormant, bool, Networkable(), bool(__thiscall*)(void*), 8)
-		M_VIRTUALGET(Index, int, Networkable(), int(__thiscall*)(void*), 9)
+	M_VIRTUALGET(ClientClass, CClientClass*, Networkable(), CClientClass* (*)(void*), 2)
+		M_VIRTUALGET(Dormant, bool, Networkable(), bool(*)(void*), 8)
+		M_VIRTUALGET(Index, int, Networkable(), int(*)(void*), 9)
 
 public: //Everything else, lol.
 	//Credits to KGB
@@ -391,7 +391,7 @@ public: //Everything else, lol.
 
 	int GetAmmoCount(int iAmmoIndex)
 	{
-		static auto fnGetAmmoCount = S::CBaseEntity_GetAmmoCount.As<int(__thiscall*)(CBaseEntity*, int)>();
+		static auto fnGetAmmoCount = S::CBaseEntity_GetAmmoCount.As<int(*)(CBaseEntity*, int)>();
 		return fnGetAmmoCount(this, iAmmoIndex);
 	}
 
@@ -420,7 +420,7 @@ public: //Everything else, lol.
 
 	inline float TeamFortress_CalculateMaxSpeed(bool bIgnoreSpecialAbility = false)
 	{
-		using FN = float(__thiscall*)(CBaseEntity*, bool);
+		using FN = float(*)(CBaseEntity*, bool);
 		static FN fnMaxSpeed = S::TeamFortress_CalculateMaxSpeed.As<FN>();
 		return fnMaxSpeed(this, bIgnoreSpecialAbility);
 	}
@@ -783,7 +783,7 @@ public: //Everything else, lol.
 	// TODO: This is a duplicate of EstimateAbsVelocity...
 	__inline Vec3 GetVelocity()
 	{
-		static auto fnGetVelocity = S::CBaseEntity_GetVelocity.As<void(__thiscall*)(CBaseEntity*, Vec3&)>();
+		static auto fnGetVelocity = S::CBaseEntity_GetVelocity.As<void(*)(CBaseEntity*, Vec3&)>();
 		Vec3 out;
 		fnGetVelocity(this, out);
 		return out;
@@ -871,14 +871,14 @@ public: //Everything else, lol.
 
 	__inline void SetAbsOrigin(const Vec3& vOrigin)
 	{
-		using FN = void(__thiscall*)(CBaseEntity*, const Vec3&);
+		using FN = void(*)(CBaseEntity*, const Vec3&);
 		static FN fnSetAbsOrigin = S::CBaseEntity_SetAbsOrigin.As<FN>();
 		fnSetAbsOrigin(this, vOrigin);
 	}
 
 	__inline void PostDataUpdate(int updateType)
 	{
-		using FN = void(__thiscall*)(CBaseEntity*, int);
+		using FN = void(*)(CBaseEntity*, int);
 		static FN fnPostDataUpdate = S::CBaseEntity_PostDataUpdate.As<FN>();
 		fnPostDataUpdate(this, updateType);
 	}
@@ -905,7 +905,7 @@ public: //Everything else, lol.
 
 		if (Effect == EF_NODRAW)
 		{
-			static auto fnAddToLeafSystem = S::CBaseEntity_RemoveEffect.As<int(__thiscall*)(PVOID, int)>();
+			static auto fnAddToLeafSystem = S::CBaseEntity_RemoveEffect.As<int(*)(PVOID, int)>();
 
 			if (fnAddToLeafSystem)
 			{
@@ -981,7 +981,7 @@ public: //Everything else, lol.
 
 	__inline void EstimateAbsVelocity(Vec3& vVel)
 	{
-		static auto fnEstimateABSVelocity = S::CBaseEntity_GetVelocity.As<void(__thiscall*)(void*, Vec3&)>();
+		static auto fnEstimateABSVelocity = S::CBaseEntity_GetVelocity.As<void(*)(void*, Vec3&)>();
 		fnEstimateABSVelocity(this, vVel);
 	}
 
@@ -998,55 +998,55 @@ public: //Everything else, lol.
 
 	__inline void UpdateButtonState(int nUserCmdButtonMask)
 	{
-		static auto fnUpdateButtonState = S::CBaseEntity_UpdateButtonState.As<void(__thiscall*)(void*, int)>();
+		static auto fnUpdateButtonState = S::CBaseEntity_UpdateButtonState.As<void(*)(void*, int)>();
 		fnUpdateButtonState(this, nUserCmdButtonMask);
 	}
 
 	__inline void SetNextThink(float thinkTime, const char* szContext)
 	{
-		static auto fnSetNextThink = S::CBaseEntity_SetNextThink.As<void(__thiscall*)(void*, float, const char*)>();
+		static auto fnSetNextThink = S::CBaseEntity_SetNextThink.As<void(*)(void*, float, const char*)>();
 		fnSetNextThink(this, thinkTime, szContext);
 	}
 
 	__inline int GetNextThinkTick(const char* szContext)
 	{
-		static auto fnGetNextThinkTick = S::CBaseEntity_GetNextThinkTick.As<int(__thiscall*)(void*, const char*)>();
+		static auto fnGetNextThinkTick = S::CBaseEntity_GetNextThinkTick.As<int(*)(void*, const char*)>();
 		return fnGetNextThinkTick(this, szContext);
 	}
 
 	__inline bool PhysicsRunThink(int thinkMethod = 0)
 	{
-		static auto fnPhysicsRunThink = S::CBaseEntity_PhysicsRunThink.As<bool(__thiscall*)(void*, int)>();
+		static auto fnPhysicsRunThink = S::CBaseEntity_PhysicsRunThink.As<bool(*)(void*, int)>();
 		return fnPhysicsRunThink(this, thinkMethod);
 	}
 
 	__inline void UpdateClientSideAnimation() {
-		static auto fnUpdateClientSideAnimation = S::CBaseAnimating_UpdateClientSideAnimation.As<void(__thiscall*)(CBaseEntity*)>();
+		static auto fnUpdateClientSideAnimation = S::CBaseAnimating_UpdateClientSideAnimation.As<void(*)(CBaseEntity*)>();
 		return fnUpdateClientSideAnimation(this);
 	}
 
 	__inline float FrameAdvance(float flInterval) {
-		static auto fnFrameAdvance = S::CBaseAnimating_FrameAdvance.As<float(__thiscall*)(CBaseEntity*, float)>();
+		static auto fnFrameAdvance = S::CBaseAnimating_FrameAdvance.As<float(*)(CBaseEntity*, float)>();
 		return fnFrameAdvance(this, flInterval);
 	}
 
 	__inline void SelectItem(const char* pstr, int iSubType) {
-		typedef bool(__thiscall* FN)(PVOID, const char*, int);
+		typedef bool(* FN)(PVOID, const char*, int);
 		GetVFunc<FN>(this, 270)(this, pstr, iSubType);
 	}
 
 	__inline void PreThink() {
-		typedef void(__thiscall* FN)(PVOID);
+		typedef void(* FN)(PVOID);
 		GetVFunc<FN>(this, 260)(this);
 	}
 
 	__inline void Think() {
-		typedef void(__thiscall* FN)(PVOID);
+		typedef void(* FN)(PVOID);
 		GetVFunc<FN>(this, 174)(this);
 	}
 
 	__inline void PostThink() {
-		typedef void(__thiscall* FN)(PVOID);
+		typedef void(* FN)(PVOID);
 		GetVFunc<FN>(this, 261)(this);
 	}
 };

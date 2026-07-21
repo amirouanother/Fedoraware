@@ -5,24 +5,24 @@
 
 namespace S
 {
-	MAKE_SIGNATURE(GlobalVars_Interface, ENGINE_DLL, "68 ? ? ? ? 50 50 FF 12", 0x1);
-	MAKE_SIGNATURE(ClientState_Interface, ENGINE_DLL, "68 ? ? ? ? E8 ? ? ? ? 83 C4 ? 5F 5E 5B 5D", 0x1);
-	MAKE_SIGNATURE(ClientModeShared, CLIENT_DLL, "8B 0D ? ? ? ? 8B 02 D9 05", 0x2);
-	MAKE_SIGNATURE(DemoPlayer_Interface, ENGINE_DLL, "8B 0D ? ? ? ? 85 C9 74 ? 8B 01 8B 40 ? FF D0 84 C0 74 ? 8B 0D ? ? ? ? 8B 01 FF 50 ? 83 F8 ? 7D ? 53", 0x2);
-	MAKE_SIGNATURE(TFGCClientSystem_Interface, CLIENT_DLL, "B9 ? ? ? ? 50 E8 ? ? ? ? 8B 5D", 0x1);
-	MAKE_SIGNATURE(TFInventoryManager_Interface, CLIENT_DLL, "B9 ? ? ? ? E8 ? ? ? ? B9 ? ? ? ? C7 05 ? ? ? ? ? ? ? ? C7 05 ? ? ? ? ? ? ? ? C7 05", 0x1);
-	MAKE_SIGNATURE(Input_Interface, CLIENT_DLL, "8B 0D ? ? ? ? 56 8B 01 FF 50 ? 8B 45 ? 5F 5E 5B C7 40", 0x2);
-	MAKE_SIGNATURE(UniformRandomStream_Interface, VSTDLIB_DLL, "B9 ? ? ? ? 85 C0 0F 45 C8 89 0D ? ? ? ? 5D C3", 0x1);
-	MAKE_SIGNATURE(ViewRenderBeams_Interface, CLIENT_DLL, "8B 0D ? ? ? ? 56 8B 01 FF 50 ? 0F B7 96", 0x2);
-	MAKE_SIGNATURE(TFGameRules_Interface, CLIENT_DLL, "8B 0D ? ? ? ? 56 8B 01 8B 80 ? ? ? ? FF D0 84 C0 0F 84 ? ? ? ? 80 BB", 0x2);
-	MAKE_SIGNATURE(ThirdPersonManager_Interface, CLIENT_DLL, "B9 ? ? ? ? E8 ? ? ? ? 84 C0 74 ? 8B 86", 0x1);
-	MAKE_SIGNATURE(ClientModeTFNormal_Interface, CLIENT_DLL, "B9 ? ? ? ? A3 ? ? ? ? E8 ? ? ? ? 68 ? ? ? ? E8 ? ? ? ? A1 ? ? ? ? 83 C4 ? 8B 35", 0x1);
-	MAKE_SIGNATURE(HostState_Interface, ENGINE_DLL, "8B 15 ? ? ? ? C6 85", 0x1);
-	MAKE_SIGNATURE(CTFGameMovement_Interface, CLIENT_DLL, "B9 ? ? ? ? E8 ? ? ? ? 68 ? ? ? ? C7 05 ? ? ? ? ? ? ? ? C7 05 ? ? ? ? ? ? ? ? C6 05 ? ? ? ? ? E8", 0x1);
-	MAKE_SIGNATURE(MoveHelper_Interface, CLIENT_DLL, "8B 0D ? ? ? ? 8B 01 FF 50 ? 56 8B C8 8B 10 FF 52 ? 8B 13", 0x2);
+	MAKE_SIGNATURE(GlobalVars_Interface, ENGINE_DLL, "48 8B 05 ? ? ? ? 48 8B 08 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 75 ? B9 ? ? ? ? E8 ? ? ? ? 48 8B 05", 0x2);
+	MAKE_SIGNATURE(ClientState_Interface, ENGINE_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 75 ? 48 83 C4 ? 5F 5E 5B 5D", 0x2);
+	MAKE_SIGNATURE(ClientModeShared, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? F3 0F 10 05", 0x2);
+	MAKE_SIGNATURE(DemoPlayer_Interface, ENGINE_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 83 F8", 0x2);
+	MAKE_SIGNATURE(TFGCClientSystem_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x2);
+	MAKE_SIGNATURE(TFInventoryManager_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x2);
+	MAKE_SIGNATURE(Input_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05", 0x2);
+	MAKE_SIGNATURE(UniformRandomStream_Interface, VSTDLIB_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05", 0x2);
+	MAKE_SIGNATURE(ViewRenderBeams_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 0F B7", 0x2);
+	MAKE_SIGNATURE(TFGameRules_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 80 BB", 0x2);
+	MAKE_SIGNATURE(ThirdPersonManager_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? 8B 86", 0x2);
+	MAKE_SIGNATURE(ClientModeTFNormal_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x2);
+	MAKE_SIGNATURE(HostState_Interface, ENGINE_DLL, "48 8B 15 ? ? ? ? 48 85 D2 74 ? 48 8B 02 FF 50 ? 84 C0 74 ? 48 8B 15", 0x2);
+	MAKE_SIGNATURE(CTFGameMovement_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x2);
+	MAKE_SIGNATURE(MoveHelper_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 0D", 0x2);
 
-	MAKE_SIGNATURE(Get_TFPartyClient, CLIENT_DLL, "A1 ? ? ? ? C3 CC CC CC CC CC CC CC CC CC CC 55 8B EC 83 EC ? 53", 0x0);
-	MAKE_SIGNATURE(DirectXDevice, "shaderapidx9.dll", "75 22 A1", 0x3);
+	MAKE_SIGNATURE(Get_TFPartyClient, CLIENT_DLL, "48 8B 05 ? ? ? ? C3 CC CC CC CC CC CC CC CC CC 48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56", 0x0);
+	MAKE_SIGNATURE(DirectXDevice, "shaderapidx9.dll", "48 8B 05 ? ? ? ? 48 85 C0 74 ? 48 8B 08 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05", 0x2);
 }
 
 void CInterfaces::Init()
@@ -120,20 +120,14 @@ void CInterfaces::Init()
 	AllowSecureServers = *S::AllowSecureServers.As<bool**>();
 	VALIDATE(AllowSecureServers);
 
-	const auto pdwClient = reinterpret_cast<PDWORD>(BaseClientDLL);
-	VALIDATE(pdwClient);
-
-	const auto pdwTable = *reinterpret_cast<PDWORD*>(pdwClient);
-	VALIDATE(pdwTable);
-
-	ViewRender = **reinterpret_cast<IViewRender***>(pdwTable[27] + 5);
+	ViewRender = *S::ViewRender_Interface.As<IViewRender*>();
 	VALIDATE(ViewRender);
 
 	Input = **S::Input_Interface.As<IInput***>();
 	VALIDATE(Input);
 
 	auto GetKeyValuesSystem = [&]() -> IKeyValuesSystem* {
-		static auto fn = reinterpret_cast<IKeyValuesSystem * (__cdecl*)()>(reinterpret_cast<DWORD>(GetProcAddress(GetModuleHandleA(VSTDLIB_DLL), "KeyValuesSystem")));
+		static auto fn = reinterpret_cast<IKeyValuesSystem * (*)()>(reinterpret_cast<uintptr_t>(GetProcAddress(GetModuleHandleA(VSTDLIB_DLL), "KeyValuesSystem")));
 		return fn();
 	};
 
@@ -152,9 +146,7 @@ void CInterfaces::Init()
 	EffectsClient = g_Interface.Get<CEffectsClient*>(CLIENT_DLL, IEFFECTS_INTERFACE_VERSION);
 	VALIDATE(EffectsClient);
 
-	using getachievementmgr = IAchievementMgr* (*)();
-
-	AchievementMgr = reinterpret_cast<IAchievementMgr*>(GetVFunc<getachievementmgr>(EngineClient, 115));
+	AchievementMgr = reinterpret_cast<IAchievementMgr*>(GetVFunc<IAchievementMgr*(*)()>(EngineClient, 115));
 	VALIDATE(AchievementMgr);
 
 	ViewRenderBeams = **S::ViewRenderBeams_Interface.As<IViewRenderBeams***>();
@@ -215,7 +207,7 @@ void CSteamInterfaces::Init()
 	VALIDATE_STEAM(User);
 
 	// Credits to spook953 for teaching me how this works
-	static auto fn = reinterpret_cast<ISteamNetworkingUtils * (__cdecl*)()>(GetProcAddress(GetModuleHandleA("steamnetworkingsockets.dll"), "SteamNetworkingUtils_LibV4"));
+	static auto fn = reinterpret_cast<ISteamNetworkingUtils * (*)()>(GetProcAddress(GetModuleHandleA("steamnetworkingsockets.dll"), "SteamNetworkingUtils_LibV4"));
 	NetworkingUtils = fn();
 	VALIDATE_STEAM(NetworkingUtils);
 }

@@ -36,19 +36,16 @@ void AttackingUpdate()
 }
 
 MAKE_HOOK(ClientModeShared_CreateMove, Utils::GetVFuncPtr(I::ClientModeShared, 21), bool, __fastcall,
-		  void* ecx, void* edx, float input_sample_frametime, CUserCmd* pCmd)
+		  void* ecx, float input_sample_frametime, CUserCmd* pCmd, bool& bSendPacket_s)
 {
 	G::UpdateView = true;
 	G::SilentTime = false;
 	F::AimbotGlobal.SetAttacking(false);
 
-	if (!pCmd || !pCmd->command_number) { return Hook.Original<FN>()(ecx, edx, input_sample_frametime, pCmd); }
-	if (Hook.Original<FN>()(ecx, edx, input_sample_frametime, pCmd)) { I::Prediction->SetLocalViewAngles(pCmd->viewangles); }
+	if (!pCmd || !pCmd->command_number) { return Hook.Original<FN>()(ecx, input_sample_frametime, pCmd, bSendPacket_s); }
+	if (Hook.Original<FN>()(ecx, input_sample_frametime, pCmd, bSendPacket_s)) { I::Prediction->SetLocalViewAngles(pCmd->viewangles); }
 
-	// Get the pointer to pSendPacket
-	uintptr_t _bp;
-	__asm mov _bp, ebp;
-	auto pSendPacket = reinterpret_cast<bool*>(***reinterpret_cast<uintptr_t***>(_bp) - 0x1);
+	auto pSendPacket = &bSendPacket_s;
 
 	//	save old info
 	static int nOldFlags = 0;
@@ -182,5 +179,5 @@ MAKE_HOOK(ClientModeShared_CreateMove, Utils::GetVFuncPtr(I::ClientModeShared, 2
 	G::LastUserCmd = pCmd;
 
 	const bool bShouldSkip = (G::SilentTime || G::AAActive || G::HitscanSilentActive || G::AvoidingBackstab || !G::UpdateView || !F::Misc.TauntControl(pCmd));
-	return bShouldSkip ? false : Hook.Original<FN>()(ecx, edx, input_sample_frametime, pCmd);
+	return bShouldSkip ? false : Hook.Original<FN>()(ecx, input_sample_frametime, pCmd, bSendPacket_s);
 }

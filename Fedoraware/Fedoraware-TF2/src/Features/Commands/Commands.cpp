@@ -40,7 +40,7 @@ void CCommands::Init()
 	});
 
 	Register("crash", [](const std::deque<std::string>& args) {
-		reinterpret_cast<void(__thiscall*)(void*, void*, void*, void*)>(I::BaseClientDLL + 10000)(nullptr, nullptr, nullptr, nullptr);
+		reinterpret_cast<void(*)(void*, void*, void*, void*)>(I::BaseClientDLL + 10000)(nullptr, nullptr, nullptr, nullptr);
 	});
 
 	Register("setcvar", [](std::deque<std::string> args) {

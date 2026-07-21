@@ -12,9 +12,9 @@ MAKE_HOOK(UTIL_TraceLine, S::UTIL_TraceLine(), void, __cdecl,
 {
 	static auto dwDisplayDamageFeedback = S::DisplayDamageFeedback();
 
-	if (reinterpret_cast<DWORD>(_ReturnAddress()) == dwDisplayDamageFeedback && pFilter)
+	if (reinterpret_cast<uintptr_t>(_ReturnAddress()) == dwDisplayDamageFeedback && pFilter)
 	{
-		*reinterpret_cast<float*>(reinterpret_cast<DWORD>(pFilter) + 0x2C) = 1.0f;
+		*reinterpret_cast<float*>(reinterpret_cast<uintptr_t>(pFilter) + 0x2C) = 1.0f;
 		return;
 	}
 

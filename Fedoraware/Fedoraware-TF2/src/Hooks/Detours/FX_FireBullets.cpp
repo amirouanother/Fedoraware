@@ -20,7 +20,7 @@ MAKE_HOOK(FX_FireBullets, S::FX_FireBullets(), void, __cdecl,
 	}
 
 	static auto dwFireBulletCall = S::C_TFWeaponBaseGun_FireBullet_Call();
-	if (reinterpret_cast<DWORD>(_ReturnAddress()) != dwFireBulletCall)
+	if (reinterpret_cast<uintptr_t>(_ReturnAddress()) != dwFireBulletCall)
 	{
 		return;
 	}

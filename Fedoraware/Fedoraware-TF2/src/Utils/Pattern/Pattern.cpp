@@ -4,11 +4,11 @@
 #define GET_BITS(x) (IN_RANGE((x & (~0x20)),'A','F') ? ((x & (~0x20)) - 'A' + 0xA) : (IN_RANGE(x,'0','9') ? x - '0' : 0))
 #define GET_BYTES(x) (GET_BITS(x[0]) << 4 | GET_BITS(x[1]))
 
-DWORD CPattern::FindPattern(DWORD dwAddress, DWORD dwSize, LPCSTR szPattern)
+uintptr_t CPattern::FindPattern(uintptr_t dwAddress, DWORD dwSize, LPCSTR szPattern)
 {
 	auto szPat = szPattern;
-	DWORD dwFirstMatch = 0x0;
-	const DWORD dwEnd = dwAddress + dwSize - strlen(szPattern);
+	uintptr_t dwFirstMatch = 0x0;
+	const auto dwEnd = dwAddress + dwSize - strlen(szPattern);
 
 	for (auto pCur = dwAddress; pCur < dwEnd; pCur++)
 	{
@@ -27,7 +27,6 @@ DWORD CPattern::FindPattern(DWORD dwAddress, DWORD dwSize, LPCSTR szPattern)
 				dwFirstMatch = pCur;
 			}
 
-			//Found
 			if (!szPat[2])
 			{
 				return dwFirstMatch;
@@ -42,7 +41,6 @@ DWORD CPattern::FindPattern(DWORD dwAddress, DWORD dwSize, LPCSTR szPattern)
 		}
 	}
 
-	//Failed to find, return NULL
 	return 0x0;
 }
 
@@ -59,12 +57,13 @@ HMODULE CPattern::GetModuleHandleSafe(LPCSTR szModuleName)
 	}
 }
 
-DWORD CPattern::Find(LPCSTR szModuleName, LPCSTR szPattern)
+uintptr_t CPattern::Find(LPCSTR szModuleName, LPCSTR szPattern)
 {
-	const auto modHandle = reinterpret_cast<DWORD>(GetModuleHandleSafe(szModuleName));
+	const auto modHandle = reinterpret_cast<uintptr_t>(GetModuleHandleSafe(szModuleName));
 	if (!modHandle) { return 0x0; }
 
-	const auto* ntHeaders = reinterpret_cast<IMAGE_NT_HEADERS*>(modHandle + reinterpret_cast<IMAGE_DOS_HEADER*>(modHandle)->e_lfanew);
+	const auto* dosHeader = reinterpret_cast<IMAGE_DOS_HEADER*>(modHandle);
+	const auto* ntHeaders = reinterpret_cast<IMAGE_NT_HEADERS*>(modHandle + dosHeader->e_lfanew);
 	const auto* optHeader = &ntHeaders->OptionalHeader;
 
 	return FindPattern(modHandle + optHeader->BaseOfCode, optHeader->SizeOfCode, szPattern);

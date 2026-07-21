@@ -13,7 +13,7 @@ MAKE_HOOK(CTFPlayerShared_InCond, S::CTFPlayerShared_InCond(), bool, __fastcall,
 	static const auto dwWearableShouldDraw = S::WearableShouldDraw();
 	static const auto dwHudScopeShouldDraw = S::HudScopeShouldDraw();
 
-	const auto dwRetAddr = reinterpret_cast<DWORD>(_ReturnAddress());
+	const auto dwRetAddr = reinterpret_cast<uintptr_t>(_ReturnAddress());
 
 	//static std::map<void*, bool> retaddrs;
 
@@ -39,7 +39,7 @@ MAKE_HOOK(CTFPlayerShared_InCond, S::CTFPlayerShared_InCond(), bool, __fastcall,
 		static const auto dwBombHeadStage = g_NetVars.get_offset(
 			"DT_TFPlayer", "m_Shared", "m_nHalloweenBombHeadStage");
 		static const auto dwOff = (dwBombHeadStage - dwShared) + 0x4;
-		return *reinterpret_cast<CBaseEntity**>(reinterpret_cast<DWORD>(ecx) + dwOff);
+		return *reinterpret_cast<CBaseEntity**>(reinterpret_cast<uintptr_t>(ecx) + dwOff);
 	};
 
 	//Compare team's, removing team's taunt is useless

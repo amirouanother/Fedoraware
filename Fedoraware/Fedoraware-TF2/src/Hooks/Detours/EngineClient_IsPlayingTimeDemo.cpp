@@ -3,11 +3,11 @@
 MAKE_HOOK(EngineClient_IsPlayingTimeDemo, Utils::GetVFuncPtr(I::EngineClient, 78), bool, __fastcall,
 		  void* ecx, void* edx)
 {
-	static DWORD dwInterpolateServerEntities = S::C_BaseEntity_InterpolateServerEntities();
+	static uintptr_t dwInterpolateServerEntities = S::C_BaseEntity_InterpolateServerEntities();
 
 	if (Vars::Misc::DisableInterpolation.Value)
 	{
-		if (reinterpret_cast<DWORD>(_ReturnAddress()) == (dwInterpolateServerEntities + 0xB8))
+		if (reinterpret_cast<uintptr_t>(_ReturnAddress()) == (dwInterpolateServerEntities + 0xB8))
 		{
 			return true;
 		}

@@ -495,17 +495,8 @@ namespace Math
 {
 	inline void SinCos(float radians, float *sine, float *cosine)
 	{
-		_asm
-		{
-			fld		DWORD PTR[radians]
-			fsincos
-
-			mov edx, DWORD PTR[cosine]
-			mov eax, DWORD PTR[sine]
-
-			fstp DWORD PTR[edx]
-			fstp DWORD PTR[eax]
-		}
+		*sine = sin(radians);
+		*cosine = cos(radians);
 	}
 
 	__inline void SinCos(const float& r, float& s, float& c)
@@ -709,11 +700,9 @@ namespace Math
 		VectorRotate(in1, matRotate, out);
 	}
 
-	inline double __declspec (naked) __fastcall FastSqrt(double n)
+	inline double FastSqrt(double n)
 	{
-		_asm fld qword ptr[esp + 4]
-			_asm fsqrt
-		_asm ret 8
+		return sqrt(n);
 	}
 
 	inline float NormalizeAngle(float ang)

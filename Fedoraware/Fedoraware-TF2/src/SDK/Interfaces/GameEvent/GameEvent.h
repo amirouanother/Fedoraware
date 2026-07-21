@@ -47,7 +47,7 @@ public:
 
 	// virtual CGameEvent* CreateNewEvent(const char* szName, bool bForce = false, int* unknown = nullptr) = 0;
 	CGameEvent* CreateNewEvent(const char* szName, bool bForce = false) {
-		return GetVFunc<CGameEvent* (__thiscall*)(void*, const char*, bool)>(this, 6)(this, szName, bForce);
+		return GetVFunc<CGameEvent* (*)(void*, const char*, bool)>(this, 6)(this, szName, bForce);
 	}
 
 	virtual bool		FireEvent(CGameEvent* pEvent, bool bDontBroadcast = false) = 0;

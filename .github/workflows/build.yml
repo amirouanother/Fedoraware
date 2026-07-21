@@ -1,0 +1,28 @@
+name: Build x64
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore NuGet packages
+        run: nuget restore Fedoraware\Fedoraware.sln
+
+      - name: Build Release|x64
+        run: msbuild Fedoraware\Fedoraware.sln /p:Configuration=Release /p:Platform=x64 /p:VisualStudioVersion=17.0 /m
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Fedoraware-x64
+          path: Fedoraware/bin/Release/x64/*.dll
+          if-no-files-found: warn
