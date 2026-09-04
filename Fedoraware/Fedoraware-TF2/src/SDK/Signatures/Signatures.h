@@ -32,6 +32,27 @@ public:
 	}
 
 	template <typename T> T As() { return reinterpret_cast<T>(this->operator()()); }
+
+	// Resolves a RIP-relative (rel32) operand into an absolute address.
+	// uAddress must point at the start of the matched instruction; uOffset is
+	// the byte offset from the start of the instruction to the 4-byte signed
+	// displacement (3 for "48 8B 0D disp32" / "48 8D 0D disp32" style, 2 for
+	// "0F B6 1D disp32"). The effective address is formed by adding the
+	// displacement to the RIP of the next instruction (uAddress + 4 + uOffset).
+	uintptr_t RelToAbs(uintptr_t uAddress, int uOffset = 3)
+	{
+		return *reinterpret_cast<int32_t*>(uAddress + uOffset) + uAddress + sizeof(int32_t) + uOffset;
+	}
+
+	uintptr_t RelToAbs(int uOffset = 3)
+	{
+		return RelToAbs(this->operator()(), uOffset);
+	}
+
+	template <typename T> T AsResolved(int uOffset = 3)
+	{
+		return reinterpret_cast<T>(RelToAbs(this->operator()(), uOffset));
+	}
 };
 
 #define MAKE_SIGNATURE(name, module, pattern, offset) inline CSignature name{ module, pattern, offset }
@@ -128,5 +149,5 @@ namespace S
 
 	// Values
 	MAKE_SIGNATURE(RandomSeed, CLIENT_DLL, "0F B6 1D ? ? ? ? 89 9D", 0x0);
-	MAKE_SIGNATURE(AllowSecureServers, ENGINE_DLL, "48 8D 0D ? ? ? ? 48 89 0D ? ? ? ? 48 8B 49 ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? C6 05", 0x2);
+	MAKE_SIGNATURE(AllowSecureServers, ENGINE_DLL, "48 8D 0D ? ? ? ? 48 89 0D ? ? ? ? 48 8B 49 ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? C6 05", 0x0);
 }

@@ -51,7 +51,7 @@
 namespace S
 {
 	MAKE_SIGNATURE(CClientState_ForceFullUpdate, ENGINE_DLL, "48 89 5C 24 ? 57 48 83 EC ? 48 8B F9 48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 86", 0x0);
-	MAKE_SIGNATURE(ViewRender_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05 ? ? ? ? 48 89 05", 0x2);
+	MAKE_SIGNATURE(ViewRender_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05 ? ? ? ? 48 89 05", 0x0);
 }
 
 class CThirdPersonManager

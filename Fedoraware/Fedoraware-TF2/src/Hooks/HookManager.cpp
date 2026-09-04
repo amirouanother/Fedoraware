@@ -8,7 +8,7 @@
 
 inline uintptr_t GetVFuncPtr(void* pBaseClass, unsigned int nIndex)
 {
-	return static_cast<uintptr_t>((*static_cast<int**>(pBaseClass))[nIndex]);
+	return reinterpret_cast<uintptr_t>((*static_cast<void***>(pBaseClass))[nIndex]);
 }
 
 CHook::CHook(const std::string& name, void* pInitFunction)

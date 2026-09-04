@@ -5,24 +5,24 @@
 
 namespace S
 {
-	MAKE_SIGNATURE(GlobalVars_Interface, ENGINE_DLL, "48 8B 05 ? ? ? ? 48 8B 08 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 75 ? B9 ? ? ? ? E8 ? ? ? ? 48 8B 05", 0x2);
-	MAKE_SIGNATURE(ClientState_Interface, ENGINE_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 75 ? 48 83 C4 ? 5F 5E 5B 5D", 0x2);
-	MAKE_SIGNATURE(ClientModeShared, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? F3 0F 10 05", 0x2);
-	MAKE_SIGNATURE(DemoPlayer_Interface, ENGINE_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 83 F8", 0x2);
-	MAKE_SIGNATURE(TFGCClientSystem_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x2);
-	MAKE_SIGNATURE(TFInventoryManager_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x2);
-	MAKE_SIGNATURE(Input_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05", 0x2);
-	MAKE_SIGNATURE(UniformRandomStream_Interface, VSTDLIB_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05", 0x2);
-	MAKE_SIGNATURE(ViewRenderBeams_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 0F B7", 0x2);
-	MAKE_SIGNATURE(TFGameRules_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 80 BB", 0x2);
-	MAKE_SIGNATURE(ThirdPersonManager_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? 8B 86", 0x2);
-	MAKE_SIGNATURE(ClientModeTFNormal_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x2);
-	MAKE_SIGNATURE(HostState_Interface, ENGINE_DLL, "48 8B 15 ? ? ? ? 48 85 D2 74 ? 48 8B 02 FF 50 ? 84 C0 74 ? 48 8B 15", 0x2);
-	MAKE_SIGNATURE(CTFGameMovement_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x2);
-	MAKE_SIGNATURE(MoveHelper_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 0D", 0x2);
+	MAKE_SIGNATURE(GlobalVars_Interface, ENGINE_DLL, "48 8B 05 ? ? ? ? 48 8B 08 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 75 ? B9 ? ? ? ? E8 ? ? ? ? 48 8B 05", 0x0);
+	MAKE_SIGNATURE(ClientState_Interface, ENGINE_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 75 ? 48 83 C4 ? 5F 5E 5B 5D", 0x0);
+	MAKE_SIGNATURE(ClientModeShared, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? F3 0F 10 05", 0x0);
+	MAKE_SIGNATURE(DemoPlayer_Interface, ENGINE_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 83 F8", 0x0);
+	MAKE_SIGNATURE(TFGCClientSystem_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x0);
+	MAKE_SIGNATURE(TFInventoryManager_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x0);
+	MAKE_SIGNATURE(Input_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05", 0x0);
+	MAKE_SIGNATURE(UniformRandomStream_Interface, VSTDLIB_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05", 0x0);
+	MAKE_SIGNATURE(ViewRenderBeams_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 0F B7", 0x0);
+	MAKE_SIGNATURE(TFGameRules_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 80 BB", 0x0);
+	MAKE_SIGNATURE(ThirdPersonManager_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? 8B 86", 0x0);
+	MAKE_SIGNATURE(ClientModeTFNormal_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x0);
+	MAKE_SIGNATURE(HostState_Interface, ENGINE_DLL, "48 8B 15 ? ? ? ? 48 85 D2 74 ? 48 8B 02 FF 50 ? 84 C0 74 ? 48 8B 15", 0x0);
+	MAKE_SIGNATURE(CTFGameMovement_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 74 ? B9", 0x0);
+	MAKE_SIGNATURE(MoveHelper_Interface, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 0D", 0x0);
 
 	MAKE_SIGNATURE(Get_TFPartyClient, CLIENT_DLL, "48 8B 05 ? ? ? ? C3 CC CC CC CC CC CC CC CC CC 48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56", 0x0);
-	MAKE_SIGNATURE(DirectXDevice, "shaderapidx9.dll", "48 8B 05 ? ? ? ? 48 85 C0 74 ? 48 8B 08 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05", 0x2);
+	MAKE_SIGNATURE(DirectXDevice, "shaderapidx9.dll", "48 8B 05 ? ? ? ? 48 85 C0 74 ? 48 8B 08 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 05", 0x0);
 }
 
 void CInterfaces::Init()
@@ -74,19 +74,19 @@ void CInterfaces::Init()
 	Cvar = g_Interface.Get<ICvar*>(VSTDLIB_DLL, VENGINE_CVAR_INTERFACE_VERSION);
 	VALIDATE(Cvar);
 
-	GlobalVars = *S::GlobalVars_Interface.As<CGlobalVarsBase**>();
+	GlobalVars = *S::GlobalVars_Interface.AsResolved<CGlobalVarsBase**>();
 	VALIDATE(GlobalVars);
 
-	ClientState = *S::ClientState_Interface.As<CClientState**>();
+	ClientState = *S::ClientState_Interface.AsResolved<CClientState**>();
 	VALIDATE(ClientState);
 
-	ClientModeShared = **S::ClientModeShared.As<CClientModeShared***>();
+	ClientModeShared = *S::ClientModeShared.AsResolved<CClientModeShared**>();
 	VALIDATE(ClientModeShared);
 
 	EngineVGui = g_Interface.Get<CEngineVGui*>(ENGINE_DLL, VENGINE_VGUI_VERSION);
 	VALIDATE(EngineVGui);
 
-	DemoPlayer = **S::DemoPlayer_Interface.As<void***>();
+	DemoPlayer = *S::DemoPlayer_Interface.AsResolved<void**>();
 	VALIDATE(DemoPlayer);
 
 	RenderView = g_Interface.Get<IVRenderView*>(ENGINE_DLL, VENGINE_RENDERVIEW_INTERFACE_VERSION);
@@ -104,26 +104,26 @@ void CInterfaces::Init()
 	MaterialSystem = g_Interface.Get<CMaterialSystem*>(MATSYSTEM_DLL, VMATERIALSYSTEM_INTERFACE);
 	VALIDATE(MaterialSystem);
 
-	TFGCClientSystem = *S::TFGCClientSystem_Interface.As<CTFGCClientSystem**>();
+	TFGCClientSystem = *S::TFGCClientSystem_Interface.AsResolved<CTFGCClientSystem**>();
 	VALIDATE(TFGCClientSystem);
 
 	TFPartyClient = reinterpret_cast<CTFPartyClient * (__cdecl*)()>(S::Get_TFPartyClient())();
 	VALIDATE(TFPartyClient);
 
-	TFInventoryManager = *S::TFInventoryManager_Interface.As<CTFInventoryManager**>();
+	TFInventoryManager = *S::TFInventoryManager_Interface.AsResolved<CTFInventoryManager**>();
 	VALIDATE(TFInventoryManager);
 
 	// TODO: This doesn't belong here
-	RandomSeed = *S::RandomSeed.As<int32_t**>();
+	RandomSeed = *S::RandomSeed.AsResolved<int32_t**>();
 	VALIDATE(RandomSeed);
 
-	AllowSecureServers = *S::AllowSecureServers.As<bool**>();
+	AllowSecureServers = S::AllowSecureServers.AsResolved<bool*>();
 	VALIDATE(AllowSecureServers);
 
-	ViewRender = S::ViewRender_Interface.As<IViewRender*>();
+	ViewRender = *S::ViewRender_Interface.AsResolved<IViewRender**>();
 	VALIDATE(ViewRender);
 
-	Input = **S::Input_Interface.As<IInput***>();
+	Input = *S::Input_Interface.AsResolved<IInput**>();
 	VALIDATE(Input);
 
 	auto GetKeyValuesSystem = [&]() -> IKeyValuesSystem* {
@@ -134,7 +134,7 @@ void CInterfaces::Init()
 	KeyValuesSystem = GetKeyValuesSystem();
 	VALIDATE(KeyValuesSystem);
 
-	UniformRandomStream = *S::UniformRandomStream_Interface.As<IUniformRandomStream**>();
+	UniformRandomStream = *S::UniformRandomStream_Interface.AsResolved<IUniformRandomStream**>();
 	VALIDATE(UniformRandomStream);
 
 	StudioRender = g_Interface.Get<void*>(STUDIORENDER_DLL, "VStudioRender025");
@@ -149,34 +149,34 @@ void CInterfaces::Init()
 	AchievementMgr = reinterpret_cast<IAchievementMgr*>(GetVFunc<IAchievementMgr*(*)()>(EngineClient, 115));
 	VALIDATE(AchievementMgr);
 
-	ViewRenderBeams = **S::ViewRenderBeams_Interface.As<IViewRenderBeams***>();
+	ViewRenderBeams = *S::ViewRenderBeams_Interface.AsResolved<IViewRenderBeams**>();
 	VALIDATE(ViewRenderBeams);
 
 	EngineSound = g_Interface.Get<IEngineSound*>(ENGINE_DLL, "IEngineSoundClient003");
 	VALIDATE(EngineSound);
 
-	TFGameRules = *S::TFGameRules_Interface.As<CTFGameRules**>();
+	TFGameRules = *S::TFGameRules_Interface.AsResolved<CTFGameRules**>();
 	VALIDATE(TFGameRules);
 
-	ThirdPersonManager = *S::ThirdPersonManager_Interface.As<CThirdPersonManager**>();
+	ThirdPersonManager = *S::ThirdPersonManager_Interface.AsResolved<CThirdPersonManager**>();
 	VALIDATE(ThirdPersonManager);
 
-	DirectXDevice = **S::DirectXDevice.As<IDirect3DDevice9***>();
+	DirectXDevice = *S::DirectXDevice.AsResolved<IDirect3DDevice9**>();
 	VALIDATE(DirectXDevice);
 
-	ClientModeTF = *S::ClientModeTFNormal_Interface.As<ClientModeTFNormal**>();
+	ClientModeTF = *S::ClientModeTFNormal_Interface.AsResolved<ClientModeTFNormal**>();
 	VALIDATE(ClientModeTF);
 
 	Localize = g_Interface.Get<ILocalize*>(VGUI2_DLL, VGUI_LOCALIZE_INTERFACE_VERSION);
 	VALIDATE(Localize);
 
-	HostState = *S::HostState_Interface.As<CCommonHostState**>();
+	HostState = *S::HostState_Interface.AsResolved<CCommonHostState**>();
 	VALIDATE(HostState);
 
-	TFGameMovement = *S::CTFGameMovement_Interface.As<CTFGameMovement**>();
+	TFGameMovement = *S::CTFGameMovement_Interface.AsResolved<CTFGameMovement**>();
 	VALIDATE(TFGameMovement);
 
-	MoveHelper = **S::MoveHelper_Interface.As<CMoveHelper***>();
+	MoveHelper = *S::MoveHelper_Interface.AsResolved<CMoveHelper**>();
 	VALIDATE(MoveHelper);
 }
 
