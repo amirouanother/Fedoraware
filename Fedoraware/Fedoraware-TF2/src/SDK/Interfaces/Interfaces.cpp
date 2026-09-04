@@ -5,7 +5,7 @@
 
 namespace S
 {
-	MAKE_SIGNATURE(GlobalVars_Interface, ENGINE_DLL, "48 8B 05 ? ? ? ? 48 8B 08 48 85 C9 74 ? 48 8B 01 BA ? ? ? ? FF 50 ? 84 C0 75 ? B9 ? ? ? ? E8 ? ? ? ? 48 8B 05", 0x0);
+	MAKE_SIGNATURE(GlobalVars_Interface, ENGINE_DLL, "48 8D 05 ? ? ? ? C3 CC CC CC CC CC CC CC CC 48 8B CA", 0x0);
 	MAKE_SIGNATURE(ClientState_Interface, ENGINE_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 75 ? 48 83 C4 ? 5F 5E 5B 5D", 0x0);
 	MAKE_SIGNATURE(ClientModeShared, CLIENT_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? F3 0F 10 05", 0x0);
 	MAKE_SIGNATURE(DemoPlayer_Interface, ENGINE_DLL, "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 84 C0 74 ? 48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 8B 01 FF 50 ? 83 F8", 0x0);
@@ -74,7 +74,7 @@ void CInterfaces::Init()
 	Cvar = g_Interface.Get<ICvar*>(VSTDLIB_DLL, VENGINE_CVAR_INTERFACE_VERSION);
 	VALIDATE(Cvar);
 
-	GlobalVars = *S::GlobalVars_Interface.AsResolved<CGlobalVarsBase**>();
+	GlobalVars = S::GlobalVars_Interface.AsResolved<CGlobalVarsBase*>();
 	VALIDATE(GlobalVars);
 
 	ClientState = *S::ClientState_Interface.AsResolved<CClientState**>();
