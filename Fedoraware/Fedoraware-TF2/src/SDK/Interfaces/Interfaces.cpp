@@ -182,8 +182,24 @@ void CInterfaces::Init()
 
 void CSteamInterfaces::Init()
 {
-	Client = g_Interface.Get<ISteamClient*>("steamclient.dll", STEAMCLIENT_INTERFACE_VERSION);
+	// On x64 the Steam client library is steamclient64.dll (the 32-bit one,
+	// steamclient.dll, is not loaded). Resolve ISteamClient via
+	// SteamInternal_CreateInterface, the reliable way to acquire it on
+	// modern Steam.
+	if (const auto hSteamClient = GetModuleHandleA("steamclient64.dll"))
+	{
+		if (const auto fnSteamInternalCreateInterface = reinterpret_cast<ISteamClient*(__cdecl*)(const char*)>(GetProcAddress(hSteamClient, "SteamInternal_CreateInterface")))
+		{
+			Client = fnSteamInternalCreateInterface(STEAMCLIENT_INTERFACE_VERSION);
+		}
+	}
 	VALIDATE_STEAM(Client);
+
+	// Steam is only used for optional features (rich presence, avatars,
+	// achievements, playerlist). If it failed to init, bail out safely
+	// instead of dereferencing a null interface.
+	if (!Client)
+		return;
 
 	const HSteamPipe hsNewPipe = Client->CreateSteamPipe();
 	VALIDATE_STEAM(hsNewPipe);
@@ -207,7 +223,14 @@ void CSteamInterfaces::Init()
 	VALIDATE_STEAM(User);
 
 	// Credits to spook953 for teaching me how this works
-	static auto fn = reinterpret_cast<ISteamNetworkingUtils * (*)()>(GetProcAddress(GetModuleHandleA("steamnetworkingsockets.dll"), "SteamNetworkingUtils_LibV4"));
-	NetworkingUtils = fn();
+	// On x64 the module is steamnetworkingsockets64.dll and may not be loaded
+	// yet; guard so a missing module/export doesn't call a null function.
+	if (const auto hSockets = GetModuleHandleA("steamnetworkingsockets64.dll"))
+	{
+		if (const auto fn = reinterpret_cast<ISteamNetworkingUtils * (*)()>(GetProcAddress(hSockets, "SteamNetworkingUtils_LibV4")))
+		{
+			NetworkingUtils = fn();
+		}
+	}
 	VALIDATE_STEAM(NetworkingUtils);
 }

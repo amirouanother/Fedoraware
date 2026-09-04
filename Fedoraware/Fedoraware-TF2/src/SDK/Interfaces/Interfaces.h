@@ -188,6 +188,10 @@ public:
 	ISteamUtils* Utils = nullptr;
 	ISteamNetworkingUtils* NetworkingUtils = nullptr;
 
+	// True once Steam initialized successfully. Steam is only used by optional
+	// features; when it's unavailable the cheat should degrade gracefully.
+	bool Available() const { return Client != nullptr; }
+
 	void Init();
 };
 

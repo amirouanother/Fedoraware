@@ -8,6 +8,8 @@
 
 inline uintptr_t GetVFuncPtr(void* pBaseClass, unsigned int nIndex)
 {
+	if (!pBaseClass)
+		return 0;
 	return reinterpret_cast<uintptr_t>((*static_cast<void***>(pBaseClass))[nIndex]);
 }
 

@@ -253,7 +253,7 @@ void CPlayerList::Render()
 
 					if (!player.FakePlayer && ImGui::BeginPopupContextItem())
 					{
-						if (ImGui::Selectable("Profile"))
+						if (g_SteamInterfaces.Friends && ImGui::Selectable("Profile"))
 						{
 							g_SteamInterfaces.Friends->ActivateGameOverlayToUser(
 								"steamid", CSteamID(0x0110000100000000ULL + player.FriendsID));
