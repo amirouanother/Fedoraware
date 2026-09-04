@@ -51,7 +51,9 @@ namespace Utils
 {
 	inline uintptr_t GetVFuncPtr(void* pBaseClass, unsigned int nIndex)
 	{
-		return static_cast<uintptr_t>((*static_cast<int**>(pBaseClass))[nIndex]);
+		if (!pBaseClass)
+			return 0;
+		return reinterpret_cast<uintptr_t>((*static_cast<void***>(pBaseClass))[nIndex]);
 	}
 
 

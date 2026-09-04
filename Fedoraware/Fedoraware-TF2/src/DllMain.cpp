@@ -4,12 +4,12 @@
 
 DWORD WINAPI MainThread(LPVOID lpParam)
 {
-	//"mss32.dll" being one of the last modules to be loaded
-	//So wait for that before proceeding, after it's up everything else should be too
-	//Allows us to correctly use autoinject and just start the game.
-	while (!GetModuleHandleW(L"mss32.dll") ||
-		!GetModuleHandleW(L"ntdll.dll") ||
-		!GetModuleHandleW(L"stdshader_dx9.dll") ||
+	// Wait until the x64 game modules our init depends on are loaded before
+	// proceeding. On x64 TF2 the audio system is "mss64.dll" (not "mss32.dll")
+	// and shader names differ, so gate on the modules our interfaces and
+	// signatures actually need. Allows autoinject at game start.
+	while (!GetModuleHandleW(L"client.dll") ||
+		!GetModuleHandleW(L"engine.dll") ||
 		!GetModuleHandleW(L"materialsystem.dll"))
 	{
 		Sleep(2000);

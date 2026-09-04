@@ -1245,6 +1245,9 @@ void CMisc::AutoPeek(CUserCmd* pCmd, CBaseEntity* pLocal)
 
 void CMisc::SteamRPC()
 {
+	if (!g_SteamInterfaces.Available() || !g_SteamInterfaces.Friends)
+		return;
+
 	if (!Vars::Misc::Steam::EnableRPC.Value)
 	{
 		if (SteamCleared == false) //stupid way to return back to normal rpc
@@ -1346,6 +1349,9 @@ void CMisc::SteamRPC()
 
 void CMisc::UnlockAchievements()
 {
+	if (!g_SteamInterfaces.UserStats)
+		return;
+
 	using FN = IAchievementMgr * (*)(void);
 	const auto achievementmgr = GetVFunc<FN>(I::EngineClient, 114)();
 	if (achievementmgr)
@@ -1362,6 +1368,9 @@ void CMisc::UnlockAchievements()
 
 void CMisc::LockAchievements()
 {
+	if (!g_SteamInterfaces.UserStats)
+		return;
+
 	using FN = IAchievementMgr * (*)(void);
 	const auto achievementmgr = GetVFunc<FN>(I::EngineClient, 114)();
 	if (achievementmgr)

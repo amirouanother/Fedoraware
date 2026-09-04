@@ -367,6 +367,9 @@ void CDraw::DrawHudTextureByName(float x0, float y0, float s0, const char* textu
 
 void CDraw::Avatar(const int x, const int y, const int w, const int h, const uint32 nFriendID)
 {
+	if (!g_SteamInterfaces.Available() || !g_SteamInterfaces.Friends || !g_SteamInterfaces.Utils)
+		return;
+
 	if (const auto nID = static_cast<uint64>(nFriendID + 0x0110000100000000))
 	{
 		if (m_Avatars.contains(nID))

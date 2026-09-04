@@ -17,6 +17,9 @@ public:
 
 	void CreateHook(void* pTarget, void* pDetour)
 	{
+		if (!pTarget)
+			return; // never hook a null/garbage target (e.g. unavailable optional interface)
+
 		if (MH_CreateHook(pTarget, pDetour, &m_OriginalFunction) != MH_OK)
 		{
 			throw std::runtime_error("Failed to create hook: " + m_Name);
