@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <cstdint>
 
 static constexpr auto CLIENT_DLL = "client.dll";
 static constexpr auto ENGINE_DLL = "engine.dll";
